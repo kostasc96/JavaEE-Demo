@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Update Teacher</title>
+</h:head>
+<h:body>
+    <h:form action="update-student-form">
+        <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+                <p:inputText placeholder="Name" value="#{teacherController.teacher.name}" id = "name"/>
+            </div>
+            <div class="ui-inputgroup">
+                <p:inputText placeholder="Surname" value="#{teacherController.teacher.surname}" id="surname"/>
+            </div>
+            <div class="ui-inputgroup">
+                <p:inputText placeholder="Email" value="#{teacherController.teacher.email}" id="email"/>
+            </div>
+            <div class="ui-inputgroup">
+                <p:inputText placeholder="Address" value="#{teacherController.teacher.address}" id="address"/>
+            </div>
+            <div class="ui-inputgroup">
+                <p:inputText placeholder="Phone Number" value="#{teacherController.teacher.phoneNumber}" id="phoneNumber"/>
+            </div>
+            <br/>
+            <h:commandButton value="Save" styleClass="Save" process="@form" action="#{teacherController.updateTeacher(teacherController.teacher)}"/>
+        </div>
+    </h:form>
+</h:body>
+</html>

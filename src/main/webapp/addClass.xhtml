@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Add Class</title>
+</h:head>
+<h:body>
+    <p:messages id="messages" showDetail="true" closable="true"/>
+    <h:form action="add-class-form">
+        <div class="ui-g-12 ui-md-4">
+            <div>
+                <p:outputLabel for="@next" value="Teacher Id:" />
+                <p:selectOneMenu id="teacherId" value="#{classController.teacherId}" panelStyle="width:180px"
+                                 effect="fade" style="width:160px" filter="true" filterMatchMode="startsWith">
+                    <f:selectItems value="#{teacherController.showTeachers()}" var="t" itemLabel="#{t.name} #{t.surname}" itemValue="#{t.id}" />
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Name"/>
+                        </f:facet>
+                        <h:outputText value="#{t.name}" />
+                    </p:column>
+                </p:selectOneMenu>
+            </div>
+            <div class="ui-inputgroup">
+                <p:inputText placeholder="Name" value="#{classController.classes.name}" id="name" required="true" action="#{messagesView.error}"/>
+            </div>
+            <div class="ui-inputgroup">
+                <p:inputText placeholder="Semester" value="#{classController.classes.semester}" id="semester" required="true" action="#{messagesView.error}"/>
+            </div>
+            <br/>
+            <h:commandButton value="Save" styleClass="Save" process="@form" action="#{classController.addClass(classController.classes)}" outcome="showClasses.xhtml"/>
+        </div>
+    </h:form>
+</h:body>
+</html>

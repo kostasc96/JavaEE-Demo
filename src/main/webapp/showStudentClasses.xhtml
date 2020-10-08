@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Show Student Classes</title>
+</h:head>
+<h:body>
+    <p:button outcome="showStudents.xhtml" value="Show Students" icon="pi pi-star" style="margin-right:20px;"/>
+    <br></br>
+    <p:dataTable var="tempEnrollment" value="#{studentController.enrollments}">
+        <p:column headerText="Id">
+            <h:outputText value="#{tempEnrollment.id.classes.id}" />
+        </p:column>
+        <p:column headerText="Name">
+            <h:outputText value="#{tempEnrollment.id.classes.name}" />
+        </p:column>
+        <p:column headerText="Semester">
+            <h:outputText value="#{tempEnrollment.id.classes.semester}" />
+        </p:column>
+        <p:column headerText="Teacher Name">
+            <h:outputText value="#{tempEnrollment.id.classes.teacher.name}" />
+        </p:column>
+    </p:dataTable>
+</h:body>
+</html>

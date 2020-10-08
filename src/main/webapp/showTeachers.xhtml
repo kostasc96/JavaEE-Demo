@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Show Teachers</title>
+</h:head>
+<h:body>
+    <p:button outcome="showStudents.xhtml" value="Show Students" icon="pi pi-star" style="margin-right:20px;"/>
+    <p:button outcome="showClasses.xhtml" value="Show Classes" icon="pi pi-star" style="margin-right:20px;"/>
+    <br></br>
+    <h:form action="show-teachers-form">
+        <p:dataTable var="tempTeacher" value="#{teacherController.showTeachers()}" id="tbl" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                     paginator="true" rows="10" style="margin-bottom:20px">
+            <f:facet name="{Exporters}">
+                <div style="float:right;padding-top: 5px;">
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/excel.png" width="24"/>
+                        <p:dataExporter type="xls" target="tbl" fileName="students" />
+                    </h:commandLink>
+                </div>
+            </f:facet>
+            <p:column headerText="Id">
+                <h:outputText value="#{tempTeacher.id}" />
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{tempTeacher.name}" />
+            </p:column>
+            <p:column headerText="Surname">
+                <h:outputText value="#{tempTeacher.surname}" />
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{tempTeacher.email}" />
+            </p:column>
+            <p:column headerText="Address">
+                <h:outputText value="#{tempTeacher.address}" />
+            </p:column>
+            <p:column headerText="Phone Number">
+                <h:outputText value="#{tempTeacher.phoneNumber}" />
+            </p:column>
+            <p:column headerText="Action">
+                <p:commandButton action="#{teacherController.loadTeacher(tempTeacher.id)}"  value="Update Teacher" icon="pi pi-star" style="margin-right:20px;"/>
+                <p:commandButton action="#{teacherController.deleteTeacher(tempTeacher.id)}" value="Delete Teacher" icon="pi pi-star" style="margin-right:20px;" update="@form">
+                    <f:param name="productId" value="10" />
+                </p:commandButton>
+            </p:column>
+        </p:dataTable>
+        <br></br>
+        <p:button outcome="addTeacher.xhtml" value="Add Teacher" icon="pi pi-star" style="margin-right:20px;"/>
+    </h:form>
+    <br></br>
+    <h5>Go to home page: </h5>
+    <p:button outcome="index.xhtml" value="Home Page" icon="pi pi-star" style="margin-right:20px;"/>
+</h:body>
+</html>
